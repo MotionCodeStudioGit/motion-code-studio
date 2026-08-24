@@ -1,5 +1,4 @@
-# Never serve the git directory if it rides along on a deploy.
-/.git/*                 /   404
-
-# Internal document, not for the public.
-/BRAND-FOUNDATION.md    /   404
+# The bang on the status code forces these rules even though a real file
+# exists at the path. Without it Netlify serves the file and ignores the rule.
+/BRAND-FOUNDATION.md    /   404!
+/.git/*                 /   404!
