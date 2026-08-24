@@ -1,0 +1,2 @@
+# Never serve the git directory if it ends up in a deploy.
+/.git/*   /   404
