@@ -1,2 +1,5 @@
-# Never serve the git directory if it ends up in a deploy.
-/.git/*   /   404
+# Never serve the git directory if it rides along on a deploy.
+/.git/*                 /   404
+
+# Internal document, not for the public.
+/BRAND-FOUNDATION.md    /   404

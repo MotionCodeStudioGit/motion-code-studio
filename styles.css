@@ -1419,3 +1419,38 @@ a.signature__media:hover .signature__media-cue-arrow { transform: translateX(6px
   border: 1px solid var(--hl-dark);
   background: transparent;
 }
+
+
+/* Hero headline: one line with separators on desktop, stacked on phones */
+.hero__part { white-space: nowrap; }
+.hero__dot  { opacity: 0.4; padding: 0 0.5em; }
+@media (max-width: 760px) {
+  .hero__part { display: block; }
+  .hero__dot  { display: none; }
+  .hero__title { line-height: 1.5; }
+}
+
+/* Integrative Bodywork listed as its own offering in the studio column */
+.offering {
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(20,20,20,0.16);
+}
+.half--dark .offering { border-top-color: rgba(245,243,240,0.16); }
+.offering__title {
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+.half--light .offering__title { color: #1a1a1a; }
+.half--dark  .offering__title { color: rgba(245,243,240,0.85); }
+.offering__body {
+  font-size: 14px;
+  line-height: 1.65;
+  margin: 0;
+}
+.half--light .offering__body { color: #5a5a5a; }
+.half--dark  .offering__body { color: rgba(245,243,240,0.6); }
