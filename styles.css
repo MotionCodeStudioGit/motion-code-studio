@@ -1454,3 +1454,7 @@ a.signature__media:hover .signature__media-cue-arrow { transform: translateX(6px
 }
 .half--light .offering__body { color: #5a5a5a; }
 .half--dark  .offering__body { color: rgba(245,243,240,0.6); }
+
+
+/* Two dark sections in a row would otherwise read as one long block */
+.lp-section--dark + .lp-section--dark { border-top: 1px solid rgba(245,243,240,0.10); }
