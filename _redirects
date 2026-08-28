@@ -1,4 +1,5 @@
 # The bang on the status code forces these rules even though a real file
 # exists at the path. Without it Netlify serves the file and ignores the rule.
 /BRAND-FOUNDATION.md    /   404!
+/CLAUDE.md              /   404!
 /.git/*                 /   404!
