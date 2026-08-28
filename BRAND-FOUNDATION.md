@@ -46,6 +46,6 @@ If Motion Code succeeds, people won't think "I need to go because I'm in pain." 
 1. **Advanced chiropractic care** — restores structure (Dr. Max)
 2. **Integrative bodywork** — restores healthy tissue (Edgar)
 3. **Movement practices** — develop capability
-4. **Recovery** — supports adaptation (Tati's wellness side)
+4. **Recovery** — supports adaptation
 5. **Education** — creates understanding (the workshops / Academy)
 6. **Community** — makes lasting change possible
