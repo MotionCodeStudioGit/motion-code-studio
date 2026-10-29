@@ -1460,3 +1460,10 @@ button { font: inherit; }
 .bmap__grid:not([data-reveal]) .bmap__spine path { stroke-dashoffset: 0; }
 .bmap__grid:not([data-reveal]) .bmap__ticks path,
 .bmap__grid:not([data-reveal]) .bmap__pin { opacity: 1; }
+
+/* Four reviews in a three-up auto-fit grid leaves the fourth stranded
+   on its own row. Pin them to two columns so they always form a block. */
+.lp-grid--reviews { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 720px) {
+  .lp-grid--reviews { grid-template-columns: 1fr; }
+}
