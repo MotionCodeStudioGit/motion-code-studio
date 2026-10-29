@@ -160,7 +160,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="styles.css?v=95" />
+<link rel="stylesheet" href="styles.css?v=96" />
 </head>
 <body>
 
@@ -237,6 +237,137 @@
       We combine integrative bodywork with advanced chiropractic care to restore movement throughout the body. Each session builds on the one before it, continuing your personalized plan and progressing steadily toward your results, rather than treating every visit as a standalone fix. Our deliberately planned, hands-on bodywork techniques and precise chiropractic adjustments work together to reduce pain and support long-term physical performance, whether you&#8217;re recovering from injury or maintaining peak condition.
     </p>
     <p class="about__sig"><span class="about__sig-name">Dr. Maksim Ishankhanov, DC</span><span class="about__sig-sep">·</span><span class="about__sig-role">Founder &amp; Lead Practitioner</span></p>
+  </div>
+</section>
+
+<!-- ============== WHERE IT HURTS ==============
+     Sends people straight to the page for their area instead of making
+     them hunt through the nav. The figure is aria-hidden on purpose:
+     the list beside it carries the same links for keyboard and screen
+     readers, so the pins are a mouse and touch convenience only. -->
+<section class="bmap" aria-labelledby="bmap-title" data-bmap>
+  <div class="bmap__inner">
+
+    <div class="bmap__head">
+      <span class="kicker kicker--dark">Where it hurts</span>
+      <h2 class="bmap__title" id="bmap-title">Start with what you feel.</h2>
+      <p class="bmap__lede">Pain in one place is often driven by restriction somewhere else. Pick the area that brought you here and see how we treat it.</p>
+    </div>
+
+    <div class="bmap__grid">
+
+      <div class="bmap__figure" aria-hidden="true">
+        <svg class="bmap__svg" viewBox="0 0 320 500" xmlns="http://www.w3.org/2000/svg" focusable="false">
+
+          <!-- Soft copper glow behind the area you are pointing at. Blurred,
+               and never clickable, so it cannot sit in front of the pins. -->
+          <g class="bmap__zones">
+            <path class="bmap__zone" data-region="neck"     d="M160 76 C158 84 160 88 160 100"/>
+            <path class="bmap__zone" data-region="posture"  d="M160 106 C157 130 163 152 161 178"/>
+            <path class="bmap__zone" data-region="lowback"  d="M160 188 C157 212 162 238 160 264"/>
+            <path class="bmap__zone" data-region="sciatica" d="M152 288 C146 306 141 328 139 346"/>
+            <path class="bmap__zone" data-region="joints"   d="M137 360 C135 372 135 388 137 402"/>
+          </g>
+
+          <g class="bmap__body" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="160" cy="48" r="29"/>
+            <path d="M146 73 L145 89"/>
+            <path d="M174 73 L175 89"/>
+            <path d="M108 106 C110 96 124 90 141 89 L179 89 C196 90 210 96 212 106
+                     C209 128 206 142 205 154 C202 182 196 206 194 228
+                     C194 242 199 252 202 264 C205 276 200 288 190 290
+                     L130 290 C120 288 115 276 118 264 C121 252 126 242 126 228
+                     C124 206 118 182 115 154 C114 142 111 128 108 106 Z"/>
+            <path d="M106 110 C95 134 89 170 87 206 C86 226 88 244 91 258"/>
+            <path d="M214 110 C225 134 231 170 233 206 C234 226 232 244 229 258"/>
+            <path d="M130 288 C126 318 124 350 127 380 C129 406 131 442 133 478
+                     L147 478 C147 442 147 406 148 380 C151 350 156 318 158 288 Z"/>
+            <path d="M190 288 C194 318 196 350 193 380 C191 406 189 442 187 478
+                     L173 478 C173 442 173 406 172 380 C169 350 164 318 162 288 Z"/>
+          </g>
+
+          <g class="bmap__spine" fill="none" stroke-linecap="round">
+            <path pathLength="1" d="M160 88 C156 120 164 150 160 182 C156 214 162 244 160 276"/>
+          </g>
+          <g class="bmap__ticks" fill="none" stroke-linecap="round">
+            <path d="M154 100 H166"/><path d="M153 118 H167"/><path d="M154 136 H168"/>
+            <path d="M155 154 H168"/><path d="M154 172 H166"/><path d="M153 190 H166"/>
+            <path d="M155 208 H168"/><path d="M156 226 H169"/><path d="M155 244 H168"/>
+          </g>
+
+          <g class="bmap__pins">
+            <a class="bmap__pin" data-region="neck" href="/neck-pain-treatment" tabindex="-1">
+              <circle class="bmap__pin-hit" cx="160" cy="90" r="27"/>
+              <circle class="bmap__pin-wave" cx="160" cy="90" r="13"/>
+              <circle class="bmap__pin-ring" cx="160" cy="90" r="13"/>
+              <circle class="bmap__pin-dot" cx="160" cy="90" r="4.5"/>
+            </a>
+            <a class="bmap__pin" data-region="posture" href="/posture-correction" tabindex="-1">
+              <circle class="bmap__pin-hit" cx="160" cy="148" r="27"/>
+              <circle class="bmap__pin-wave" cx="160" cy="148" r="13"/>
+              <circle class="bmap__pin-ring" cx="160" cy="148" r="13"/>
+              <circle class="bmap__pin-dot" cx="160" cy="148" r="4.5"/>
+            </a>
+            <a class="bmap__pin" data-region="lowback" href="/back-pain-treatment" tabindex="-1">
+              <circle class="bmap__pin-hit" cx="160" cy="236" r="27"/>
+              <circle class="bmap__pin-wave" cx="160" cy="236" r="13"/>
+              <circle class="bmap__pin-ring" cx="160" cy="236" r="13"/>
+              <circle class="bmap__pin-dot" cx="160" cy="236" r="4.5"/>
+            </a>
+            <a class="bmap__pin" data-region="sciatica" href="/sciatica-treatment" tabindex="-1">
+              <circle class="bmap__pin-hit" cx="142" cy="302" r="27"/>
+              <circle class="bmap__pin-wave" cx="142" cy="302" r="13"/>
+              <circle class="bmap__pin-ring" cx="142" cy="302" r="13"/>
+              <circle class="bmap__pin-dot" cx="142" cy="302" r="4.5"/>
+            </a>
+            <a class="bmap__pin" data-region="joints" href="/sports-injury-recovery" tabindex="-1">
+              <circle class="bmap__pin-hit" cx="137" cy="380" r="27"/>
+              <circle class="bmap__pin-wave" cx="137" cy="380" r="13"/>
+              <circle class="bmap__pin-ring" cx="137" cy="380" r="13"/>
+              <circle class="bmap__pin-dot" cx="137" cy="380" r="4.5"/>
+            </a>
+          </g>
+
+        </svg>
+      </div>
+
+      <ul class="bmap__list">
+        <li>
+          <a class="bmap__item" href="/neck-pain-treatment" data-region="neck">
+            <span class="bmap__item-label">Neck</span>
+            <span class="bmap__item-sub">Stiffness, headaches, desk strain</span>
+          </a>
+        </li>
+        <li>
+          <a class="bmap__item" href="/posture-correction" data-region="posture">
+            <span class="bmap__item-label">Upper back &amp; posture</span>
+            <span class="bmap__item-sub">Rounded shoulders, tension between the blades</span>
+          </a>
+        </li>
+        <li>
+          <a class="bmap__item" href="/back-pain-treatment" data-region="lowback">
+            <span class="bmap__item-label">Lower back</span>
+            <span class="bmap__item-sub">Aching, locking up, pain when you bend</span>
+          </a>
+        </li>
+        <li>
+          <a class="bmap__item" href="/sciatica-treatment" data-region="sciatica">
+            <span class="bmap__item-label">Hip &amp; down the leg</span>
+            <span class="bmap__item-sub">Sciatica, numbness, shooting pain</span>
+          </a>
+        </li>
+        <li>
+          <a class="bmap__item" href="/sports-injury-recovery" data-region="joints">
+            <span class="bmap__item-label">Knees &amp; joints</span>
+            <span class="bmap__item-sub">Sports injury, limited range, recovery</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+
+    <p class="bmap__more">Also treating <a href="/auto-accident-injury-care">auto accident injury</a> and <a href="/chiropractic-adjustment">general chiropractic adjustment</a>.</p>
+
   </div>
 </section>
 
@@ -434,6 +565,6 @@
   <span class="mobile-cta__arrow" aria-hidden="true">→</span>
 </a>
 
-<script src="script.js?v=6" defer></script>
+<script src="script.js?v=7" defer></script>
 </body>
 </html>

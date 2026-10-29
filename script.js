@@ -40,8 +40,26 @@
   const yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
+  // Body map: hovering a pin lights its list row and the other way round.
+  // Purely presentational. The pins and the rows are both ordinary links,
+  // so every area is still reachable with this switched off.
+  const bmap = document.querySelector('[data-bmap]');
+  if (bmap) {
+    const setActive = (region, on) => {
+      bmap.querySelectorAll('[data-region="' + region + '"]')
+          .forEach(el => el.classList.toggle('is-active', on));
+    };
+    bmap.querySelectorAll('[data-region]').forEach(el => {
+      const region = el.getAttribute('data-region');
+      el.addEventListener('mouseenter', () => setActive(region, true));
+      el.addEventListener('mouseleave', () => setActive(region, false));
+      el.addEventListener('focus',      () => setActive(region, true));
+      el.addEventListener('blur',       () => setActive(region, false));
+    });
+  }
+
   const targets = document.querySelectorAll(
-    '.hero__text, .split-section, .ptile, .half, .approach-section, .visit__col, .visit__details'
+    '.hero__text, .split-section, .ptile, .half, .approach-section, .visit__col, .visit__details, .bmap__head, .bmap__grid'
   );
   targets.forEach((el, i) => {
     el.setAttribute('data-reveal', '');

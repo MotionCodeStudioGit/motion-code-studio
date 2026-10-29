@@ -367,7 +367,8 @@ button { font: inherit; }
 @media (max-width: 720px) {
   .care-block > .split-section { order: 1; }
   .care-block > .about         { order: 2; }
-  .care-block > .split         { order: 3; }
+  .care-block > .bmap          { order: 3; }
+  .care-block > .split         { order: 4; }
 }
 
 /* ============================================================
@@ -1246,3 +1247,216 @@ button { font: inherit; }
 
 /* Two dark sections in a row would otherwise read as one long block */
 .lp-section--dark + .lp-section--dark { border-top: 1px solid rgba(245,243,240,0.10); }
+
+
+/* ============================================================
+   WHERE IT HURTS — body map
+   A line figure with copper pins on the areas we treat. The pins
+   are mouse and touch only (aria-hidden, tabindex -1); the list
+   beside them carries the same links for keyboard and screen
+   readers, so nothing here is required to reach a page.
+   ============================================================ */
+.bmap {
+  background: var(--ink-2);
+  color: var(--cream);
+  padding: clamp(48px, 6vw, 88px) var(--pad-x);
+  border-top: 1px solid var(--hl-dark);
+}
+.bmap__inner { max-width: var(--max); margin: 0 auto; }
+.bmap__head  { max-width: 680px; }
+.bmap__title {
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 14px 0 16px;
+}
+.bmap__lede {
+  max-width: 560px;
+  margin: 0;
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(245,243,240,0.72);
+}
+.bmap__grid {
+  margin-top: clamp(32px, 4vw, 56px);
+  display: grid;
+  grid-template-columns: minmax(200px, 320px) 1fr;
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+
+/* The figure. currentColor drives the body outline only. */
+.bmap__figure { color: rgba(245,243,240,0.28); }
+.bmap__svg    { display: block; width: 100%; height: auto; overflow: visible; }
+.bmap__spine  { stroke: var(--copper); stroke-width: 2;   opacity: 0.85; }
+.bmap__ticks  { stroke: var(--copper); stroke-width: 1.4; opacity: 0.4; }
+
+.bmap__pin     { cursor: pointer; }
+.bmap__pin-hit { fill: transparent; }
+.bmap__pin-ring {
+  fill: none;
+  stroke: var(--copper);
+  stroke-width: 1.4;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.45);
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+}
+.bmap__pin-dot {
+  fill: var(--copper);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform .4s var(--ease), fill .4s var(--ease);
+}
+.bmap__pin.is-active .bmap__pin-ring { opacity: 0.9; transform: scale(1); }
+.bmap__pin.is-active .bmap__pin-dot  { transform: scale(1.5); fill: var(--cream); }
+
+/* The list. This is the real navigation. */
+.bmap__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.bmap__item {
+  display: block;
+  padding: clamp(14px, 1.6vw, 20px) clamp(14px, 1.8vw, 24px);
+  color: var(--cream);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: background .45s var(--ease-subtle),
+              border-color .45s var(--ease-subtle),
+              padding-left .45s var(--ease-subtle);
+}
+.bmap__item-label {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(17px, 1.6vw, 21px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.bmap__item-sub {
+  display: block;
+  margin-top: 4px;
+  font-size: clamp(13px, 1vw, 14.5px);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(245,243,240,0.55);
+  transition: color .45s var(--ease-subtle);
+}
+.bmap__item:hover,
+.bmap__item:focus-visible,
+.bmap__item.is-active {
+  background: rgba(255,255,255,0.04);
+  border-left-color: var(--copper);
+  padding-left: calc(clamp(14px, 1.8vw, 24px) + 8px);
+  outline: none;
+}
+.bmap__item:focus-visible { box-shadow: inset 0 0 0 1px var(--copper); }
+.bmap__item:hover .bmap__item-sub,
+.bmap__item.is-active .bmap__item-sub { color: rgba(245,243,240,0.75); }
+
+.bmap__more {
+  margin: clamp(28px, 3vw, 40px) 0 0;
+  font-size: clamp(13px, 1vw, 15px);
+  font-weight: 300;
+  color: rgba(245,243,240,0.5);
+}
+.bmap__more a {
+  color: var(--cream);
+  text-decoration: none;
+  padding-bottom: 1px;
+  border-bottom: 1px solid rgba(184,115,51,0.55);
+  transition: color .3s var(--ease-subtle), border-color .3s var(--ease-subtle);
+}
+.bmap__more a:hover { color: var(--copper); border-bottom-color: var(--copper); }
+
+@media (max-width: 860px) {
+  .bmap__grid   { grid-template-columns: 1fr; gap: clamp(20px, 4vw, 32px); }
+  .bmap__figure { max-width: 230px; margin: 0 auto; }
+}
+
+/* --- Body map: the figure assembles itself when it scrolls into view.
+       Spine draws down first, vertebrae fill in behind it, then the pins
+       arrive one at a time. Everything below is decoration: the global
+       prefers-reduced-motion rule collapses it to a static diagram. --- */
+.bmap__zones { pointer-events: none; filter: blur(5px); }
+.bmap__zone {
+  fill: none;
+  stroke: var(--copper);
+  stroke-width: 9;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity .55s var(--ease);
+}
+.bmap__zone.is-active { opacity: 0.7; }
+
+.bmap__spine path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.bmap__ticks path { opacity: 0; }
+.bmap__pin        { opacity: 0; }
+
+.bmap__grid.is-in .bmap__spine path {
+  animation: bmapDraw 1.7s var(--ease-slow) .2s forwards;
+}
+.bmap__grid.is-in .bmap__ticks path {
+  animation: bmapFadeIn .5s var(--ease) forwards;
+}
+.bmap__grid.is-in .bmap__ticks path:nth-child(1) { animation-delay: .50s; }
+.bmap__grid.is-in .bmap__ticks path:nth-child(2) { animation-delay: .62s; }
+.bmap__grid.is-in .bmap__ticks path:nth-child(3) { animation-delay: .74s; }
+.bmap__grid.is-in .bmap__ticks path:nth-child(4) { animation-delay: .86s; }
+.bmap__grid.is-in .bmap__ticks path:nth-child(5) { animation-delay: .98s; }
+.bmap__grid.is-in .bmap__ticks path:nth-child(6) { animation-delay: 1.10s; }
+.bmap__grid.is-in .bmap__ticks path:nth-child(7) { animation-delay: 1.22s; }
+.bmap__grid.is-in .bmap__ticks path:nth-child(8) { animation-delay: 1.34s; }
+.bmap__grid.is-in .bmap__ticks path:nth-child(9) { animation-delay: 1.46s; }
+
+.bmap__grid.is-in .bmap__pin { animation: bmapFadeIn .6s var(--ease-slow) forwards; }
+.bmap__grid.is-in .bmap__pin:nth-child(1) { animation-delay: 1.55s; }
+.bmap__grid.is-in .bmap__pin:nth-child(2) { animation-delay: 1.70s; }
+.bmap__grid.is-in .bmap__pin:nth-child(3) { animation-delay: 1.85s; }
+.bmap__grid.is-in .bmap__pin:nth-child(4) { animation-delay: 2.00s; }
+.bmap__grid.is-in .bmap__pin:nth-child(5) { animation-delay: 2.15s; }
+
+/* Once settled, the pins breathe so they read as live rather than printed.
+   Offset delays keep them from pulsing in unison, which looks mechanical. */
+.bmap__grid.is-in .bmap__pin:nth-child(1) .bmap__pin-dot { animation: bmapBreathe 3.8s var(--ease-subtle) 2.3s infinite; }
+.bmap__grid.is-in .bmap__pin:nth-child(2) .bmap__pin-dot { animation: bmapBreathe 3.8s var(--ease-subtle) 2.9s infinite; }
+.bmap__grid.is-in .bmap__pin:nth-child(3) .bmap__pin-dot { animation: bmapBreathe 3.8s var(--ease-subtle) 2.5s infinite; }
+.bmap__grid.is-in .bmap__pin:nth-child(4) .bmap__pin-dot { animation: bmapBreathe 3.8s var(--ease-subtle) 3.2s infinite; }
+.bmap__grid.is-in .bmap__pin:nth-child(5) .bmap__pin-dot { animation: bmapBreathe 3.8s var(--ease-subtle) 2.7s infinite; }
+
+/* Sonar ping, only while an area is being pointed at. */
+.bmap__pin-wave {
+  fill: none;
+  stroke: var(--copper);
+  stroke-width: 1.2;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.bmap__pin.is-active .bmap__pin-wave { animation: bmapWave 1.9s var(--ease-slow) infinite; }
+
+/* The breathing has to stand down or it overrides the hover state,
+   since an animation always beats a transition on the same property. */
+.bmap__grid.is-in .bmap__pin.is-active .bmap__pin-dot {
+  animation: none;
+  transform: scale(1.55);
+  fill: var(--cream);
+}
+
+@keyframes bmapDraw   { to { stroke-dashoffset: 0; } }
+@keyframes bmapFadeIn { to { opacity: 1; } }
+@keyframes bmapBreathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.22); }
+}
+@keyframes bmapWave {
+  0%       { opacity: .5; transform: scale(.65); }
+  70%, 100% { opacity: 0; transform: scale(2.2); }
+}
+
+/* No JS means no reveal attribute and no .is-in, so show the finished
+   state rather than an empty figure. The list below it never depended
+   on any of this. */
+.bmap__grid:not([data-reveal]) .bmap__spine path { stroke-dashoffset: 0; }
+.bmap__grid:not([data-reveal]) .bmap__ticks path,
+.bmap__grid:not([data-reveal]) .bmap__pin { opacity: 1; }
