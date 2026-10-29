@@ -559,11 +559,15 @@ button { font: inherit; }
     linear-gradient(160deg, #1c1a18 0%, #100f0e 50%, #060606 100%);
 }
 
-/* IN-STUDIO — real photo with dark fallback (since studio shot is moody/dark) */
+/* IN-STUDIO — real photo with dark fallback (since studio shot is moody/dark)
+   Anchored to the top because this is a portrait dropped into a wide, short
+   band: centring it crops the band across his forehead. The concierge half
+   stays centred, since that one is a still life with nothing to behead. */
 .half__media--studio {
   background-image:
     url('images/dr-max.jpg?v=2'),
     linear-gradient(180deg, #1a1816 0%, #0e0d0c 100%);
+  background-position: center top;
 }
 
 /* Hairline corner accents on media (brand language) */
