@@ -2,7 +2,7 @@
    HTML is always fetched from the network first so a fresh Netlify deploy
    is never hidden behind the cache. Static assets are served from cache
    and refreshed in the background. Bump CACHE to force a clean slate. */
-const CACHE = 'motioncode-v4';
+const CACHE = 'motioncode-v5';
 const OFFLINE_ASSETS = ['/', '/styles.css', '/script.js', '/favicon-192.png'];
 
 self.addEventListener('install', event => {

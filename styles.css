@@ -1467,3 +1467,28 @@ button { font: inherit; }
 @media (max-width: 720px) {
   .lp-grid--reviews { grid-template-columns: 1fr; }
 }
+
+/* The Google rating, shown as a figure rather than buried in the copy.
+   5.0 from 22 reviews as of Oct 2026; refresh the number when it moves.
+   Deliberately not marked up as aggregateRating: Google does not show
+   rich-result stars for a business rating hosted on its own site. */
+.rating {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin: 22px 0 0;
+}
+.rating__score {
+  font-family: var(--display);
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.rating__stars { color: var(--copper); font-size: clamp(15px, 1.6vw, 18px); letter-spacing: 0.14em; }
+.rating__meta  { font-size: clamp(13px, 1vw, 14.5px); font-weight: 300; }
+.lp-section--light .rating__score { color: var(--text-dark); }
+.lp-section--dark  .rating__score { color: var(--cream); }
+.lp-section--light .rating__meta  { color: var(--text-mute); }
+.lp-section--dark  .rating__meta  { color: rgba(245,243,240,0.62); }
