@@ -1376,6 +1376,35 @@ button { font: inherit; }
 @media (max-width: 860px) {
   .bmap__grid   { grid-template-columns: 1fr; gap: clamp(20px, 4vw, 32px); }
   .bmap__figure { max-width: 230px; margin: 0 auto; }
+  /* The figure renders about a third smaller here, so the outline thins
+     out and the whole body starts to disappear into the background.
+     Carry a bit more weight and contrast to hold it together. */
+  .bmap__figure { color: rgba(245,243,240,0.44); }
+  .bmap__body   { stroke-width: 2.1; }
+}
+
+/* Touch has no hover, so these rows would sit there looking like plain
+   text when they are in fact the five routes into the treatment pages,
+   and most people arrive on a phone. Give them a standing border and a
+   chevron so it is obvious they can be tapped. */
+@media (hover: none) {
+  .bmap__item {
+    position: relative;
+    padding-right: 40px;
+    background: rgba(255,255,255,0.03);
+    border-left-color: rgba(184,115,51,0.55);
+  }
+  .bmap__item::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 17px;
+    width: 7px;
+    height: 7px;
+    border-right: 1.6px solid var(--copper);
+    border-bottom: 1.6px solid var(--copper);
+    transform: translateY(-50%) rotate(-45deg);
+  }
 }
 
 /* --- Body map: the figure assembles itself when it scrolls into view.
