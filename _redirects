@@ -1,5 +1,10 @@
 # The bang on the status code forces these rules even though a real file
 # exists at the path. Without it Netlify serves the file and ignores the rule.
+# The Motion Room page was retired. Send its traffic and any old links
+# to the homepage instead of a 404.
+/motion-room            /   301
+/motion-room/           /   301
+
 /BRAND-FOUNDATION.md    /   404!
 /PROJECT-NOTES.md       /   404!
 /.git/*                 /   404!

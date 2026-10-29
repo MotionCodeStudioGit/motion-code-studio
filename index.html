@@ -133,7 +133,7 @@
       "name": "How long is a session?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sessions run 30, 60, or 90 minutes. The longer sessions allow time for the full-treatment work, including the Motion Room where it fits your plan."
+        "text": "Sessions run 30, 60, or 90 minutes. The longer sessions allow time for the full-treatment work, combining hands-on bodywork, chiropractic adjustment, and movement."
       }
     },
     {
@@ -142,14 +142,6 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. Concierge appointments are available across Greater Los Angeles, at your home, office, or hotel. Concierge fees include travel within 10 miles of the Burbank studio."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Will I be using the Motion Room?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Only if it suits you. The Motion Frame is one of several tools and is used after an evaluation, where it is appropriate for your body and your plan."
       }
     },
     {
@@ -168,7 +160,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="styles.css?v=94" />
+<link rel="stylesheet" href="styles.css?v=95" />
 </head>
 <body>
 
@@ -184,7 +176,7 @@
   <nav class="nav__links" aria-label="Primary">
     <a href="#studio">In-Studio</a>
     <a href="#concierge">Concierge</a>
-    <a href="/motion-room">Motion Room</a>
+    <a href="/about">About</a>
     <a href="#visit">Visit</a>
     <a href="https://calldrmax.janeapp.com/" class="nav__cta" target="_blank" rel="noopener">Book</a>
   </nav>
@@ -217,9 +209,9 @@
 
 </section>
 
-<!-- Care block: wraps tiles + approach + Motion Room + services so we can reorder on mobile.
-     Desktop → Approach, Services, Motion Room (tiles hidden).
-     Mobile  → tiles, Approach, Motion Room, Services (then Visit follows outside). -->
+<!-- Care block: wraps tiles + approach + services so we can reorder on mobile.
+     Desktop → Approach, Services (tiles hidden).
+     Mobile  → tiles, Approach, Services (then Visit follows outside). -->
 <div class="care-block">
 
 <!-- ============== MOBILE PREVIEW TILES (side-by-side at-a-glance) ============== -->
@@ -245,22 +237,6 @@
       We combine integrative bodywork with advanced chiropractic care to restore movement throughout the body. Each session builds on the one before it, continuing your personalized plan and progressing steadily toward your results, rather than treating every visit as a standalone fix. Our deliberately planned, hands-on bodywork techniques and precise chiropractic adjustments work together to reduce pain and support long-term physical performance, whether you&#8217;re recovering from injury or maintaining peak condition.
     </p>
     <p class="about__sig"><span class="about__sig-name">Dr. Maksim Ishankhanov, DC</span><span class="about__sig-sep">·</span><span class="about__sig-role">Founder &amp; Lead Practitioner</span></p>
-  </div>
-</section>
-
-<!-- ============== THE PILLARS ============== -->
-<section class="lp-section lp-section--dark" aria-label="Our approach to care">
-  <div class="lp-wrap">
-    <span class="kicker">What we practice</span>
-    <h2 class="lp-h2">Five parts of one philosophy</h2>
-    <p class="lp-p">Most people are taught to think about their body only when something hurts. We work the other way, building the structure, tissue, capability, and understanding that keep you well before pain starts.</p>
-    <div class="lp-grid lp-grid--pillars">
-      <div class="lp-card"><h3>Chiropractic care</h3><p>Restores structure. Precise, hands-on treatment of the joints and spine, tailored to what your assessment finds.</p></div>
-      <div class="lp-card"><h3>Integrative bodywork</h3><p>Restores healthy tissue. Deep, skilled massage and soft-tissue work that releases what holds the structure out of place.</p></div>
-      <div class="lp-card"><h3>Movement</h3><p>Develops capability. Corrective work that turns new range into strength you keep, so progress does not reverse.</p></div>
-      <div class="lp-card"><h3>Recovery</h3><p>Supports adaptation. Decompression and restorative work that let the body absorb the change and rebuild.</p></div>
-      <div class="lp-card"><h3>Education</h3><p>Creates understanding. We explain what we find in plain terms, so you can care for your body between visits.</p></div>
-    </div>
   </div>
 </section>
 
@@ -332,40 +308,6 @@
 
 </section>
 
-<!-- ============== SIGNATURE · THE MOTION ROOM ==============
-     Lives inside .care-block so it can sit in the mobile story flow (after the
-     Approach, before pricing). Desktop order is unchanged via CSS order. -->
-<section id="motion-room" class="signature" aria-label="The Motion Room">
-  <div class="signature__inner">
-    <span class="kicker kicker--dark signature__kicker">The Motion Room</span>
-    <a href="/motion-room" class="signature__media" aria-label="Step inside the Motion Room — the Motion Frame, a four-point suspension traction system for full-body spinal decompression at our Burbank studio">
-      <div class="signature__plate" aria-hidden="true">
-        <span class="signature__plate-frame"></span>
-        <span class="signature__plate-label">Motion Frame</span>
-        <span class="signature__plate-sub">Four-point suspension traction</span>
-      </div>
-      <div class="signature__photo"></div>
-      <span class="signature__media-cue">
-        <span class="signature__media-cue-text">Step inside the Motion Room</span>
-        <span class="signature__media-cue-arrow" aria-hidden="true">&#8594;</span>
-      </span>
-    </a>
-    <div class="signature__text">
-      <h2 class="signature__title">Suspended decompression.<br/>Structural alignment.</h2>
-      <p class="signature__body">
-        The Motion Room centers on the <em>Motion Frame</em>, a four-point suspension traction
-        system. The body is suspended from the wrists and ankles so its own weight decompresses
-        the spine and peripheral joints through their full&nbsp;length.
-      </p>
-      <p class="signature__body">
-        Few facilities in the United States offer suspension traction at this level.
-      </p>
-      <p class="signature__note">Part of our longer, full-treatment sessions.</p>
-      <a class="signature__link" href="/motion-room">See how it works <span aria-hidden="true">&#8594;</span></a>
-    </div>
-  </div>
-</section>
-
 </div><!-- /.care-block -->
 
 <!-- ============== VISIT ============== -->
@@ -386,15 +328,11 @@
       </details>
       <details class="lp-faq__item">
         <summary>How long is a session?</summary>
-        <p>Sessions run 30, 60, or 90 minutes. The longer sessions allow time for the full-treatment work, including the Motion Room where it fits your plan.</p>
+        <p>Sessions run 30, 60, or 90 minutes. The longer sessions allow time for the full-treatment work, combining hands-on bodywork, chiropractic adjustment, and movement.</p>
       </details>
       <details class="lp-faq__item">
         <summary>Do you come to me?</summary>
         <p>Yes. Concierge appointments are available across Greater Los Angeles, at your home, office, or hotel. Concierge fees include travel within 10 miles of the Burbank studio.</p>
-      </details>
-      <details class="lp-faq__item">
-        <summary>Will I be using the Motion Room?</summary>
-        <p>Only if it suits you. The Motion Frame is one of several tools and is used after an evaluation, where it is appropriate for your body and your plan.</p>
       </details>
       <details class="lp-faq__item">
         <summary>What are your hours?</summary>
@@ -476,7 +414,7 @@
         <a href="/">Home</a>
         <a href="/about">About Dr. Max</a>
         <a href="/what-to-expect">What to Expect</a>
-        <a href="/motion-room">The Motion Room</a>
+        <a href="/about">About Dr. Max</a>
         <a href="https://www.instagram.com/motioncodestudioburbank/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://calldrmax.janeapp.com/" target="_blank" rel="noopener">Book Online</a>
         <a href="tel:+12139320630">(213) 932-0630</a>
