@@ -59,7 +59,7 @@
   }
 
   const targets = document.querySelectorAll(
-    '.hero__text, .split-section, .ptile, .half, .approach-section, .visit__col, .visit__details, .bmap__head, .bmap__grid'
+    '.hero__text, .split-section, .ptile, .half, .approach-section, .visit__col, .visit__details, .bmap__head, .bmap__grid, .track'
   );
   targets.forEach((el, i) => {
     el.setAttribute('data-reveal', '');

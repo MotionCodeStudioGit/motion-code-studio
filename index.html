@@ -160,7 +160,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="styles.css?v=103" />
+<link rel="stylesheet" href="styles.css?v=104" />
 </head>
 <body>
 
@@ -242,9 +242,24 @@
 <section class="about">
   <div class="about__inner">
     <span class="kicker kicker--dark">The Approach</span>
-    <p class="about__body">
-      We combine integrative bodywork with advanced chiropractic care to restore movement throughout the body. Each session builds on the one before it, continuing your personalized plan and progressing steadily toward your results, rather than treating every visit as a standalone fix. Our deliberately planned, hands-on bodywork techniques and precise chiropractic adjustments work together to reduce pain and support long-term physical performance, whether you&#8217;re recovering from injury or maintaining peak condition.
-    </p>
+    <!-- Same three sentences that ran here as one paragraph, split onto a
+         spine that draws itself as the section arrives. The middle beat is
+         the one that actually separates this studio from a drop-in clinic,
+         and in a single block nobody read that far. Wording unchanged. -->
+    <ol class="track" data-track>
+      <li class="track__beat">
+        <span class="track__node" aria-hidden="true"></span>
+        <p class="track__text">We combine integrative bodywork with advanced chiropractic care to restore movement throughout the body.</p>
+      </li>
+      <li class="track__beat">
+        <span class="track__node" aria-hidden="true"></span>
+        <p class="track__text">Each session builds on the one before it, continuing your personalized plan and progressing steadily toward your results, rather than treating every visit as a standalone fix.</p>
+      </li>
+      <li class="track__beat">
+        <span class="track__node" aria-hidden="true"></span>
+        <p class="track__text">Our deliberately planned, hands-on bodywork techniques and precise chiropractic adjustments work together to reduce pain and support long-term physical performance, whether you&#8217;re recovering from injury or maintaining peak condition.</p>
+      </li>
+    </ol>
     <p class="about__sig"><span class="about__sig-name">Dr. Maksim Ishankhanov, DC</span><span class="about__sig-sep">·</span><span class="about__sig-role">Founder &amp; Lead Practitioner</span></p>
   </div>
 </section>
@@ -613,6 +628,6 @@
   <span class="mobile-cta__arrow" aria-hidden="true">→</span>
 </a>
 
-<script src="script.js?v=8" defer></script>
+<script src="script.js?v=9" defer></script>
 </body>
 </html>
