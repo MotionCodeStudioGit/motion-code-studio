@@ -160,7 +160,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="styles.css?v=101" />
+<link rel="stylesheet" href="styles.css?v=103" />
 </head>
 <body>
 
@@ -184,6 +184,15 @@
 
 <!-- ============== HERO ============== -->
 <section id="top" class="hero">
+
+  <!-- Motion field: fine lines behind the wordmark that lean toward the
+       pointer and drift on their own when there is none. The brand name
+       made visible. Drawn by script, so it adds no image weight, and it
+       is decoration only: aria-hidden with pointer-events off, so it can
+       never sit between a visitor and the two buttons below. Holds still
+       for anyone who has asked for reduced motion. -->
+  <div class="hero__field" aria-hidden="true" data-hero-field></div>
+
   <div class="hero__text">
     <div class="hero__brand">
       <span class="hero__brand-row">
@@ -604,6 +613,6 @@
   <span class="mobile-cta__arrow" aria-hidden="true">→</span>
 </a>
 
-<script src="script.js?v=7" defer></script>
+<script src="script.js?v=8" defer></script>
 </body>
 </html>

@@ -84,6 +84,82 @@
   }
 })();
 
+/* Hero motion field. Builds a column of fine lines behind the wordmark,
+   leans them toward the pointer, and drifts them on their own when there
+   is none, so the first screen moves without a photo or a video on it.
+   Decoration only: the container is aria-hidden and takes no pointer
+   events, so nothing here stands between a visitor and the buttons.
+   Skipped outright for anyone who has asked for reduced motion, and
+   parked whenever the hero is scrolled out of view so a phone is not
+   animating a screen nobody is looking at. */
+(function () {
+  var field = document.querySelector('[data-hero-field]');
+  if (!field) return;
+
+  var COUNT = 26;
+  var lines = [];
+  for (var i = 0; i < COUNT; i++) {
+    var t = i / (COUNT - 1);
+    // Width peaks in the middle so the stack reads as a column.
+    var w = 16 + 46 * Math.sin(Math.PI * t);
+    var el = document.createElement('i');
+    el.style.top = (6 + t * 88) + '%';
+    el.style.width = w + '%';
+    el.style.marginLeft = (-w / 2) + '%';
+    var base = 0.12 + 0.28 * Math.sin(Math.PI * t);
+    el.style.opacity = base.toFixed(3);
+    field.appendChild(el);
+    lines.push({ el: el, t: t, base: base });
+  }
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduce && reduce.matches) return;
+
+  var hero = field.parentElement;
+  var px = 0.5, py = 0.5, pointer = false;
+  var raf = 0, running = false;
+
+  hero.addEventListener('pointermove', function (e) {
+    var r = hero.getBoundingClientRect();
+    px = (e.clientX - r.left) / r.width;
+    py = (e.clientY - r.top) / r.height;
+    pointer = true;
+  }, { passive: true });
+  hero.addEventListener('pointerleave', function () { pointer = false; }, { passive: true });
+
+  function frame(now) {
+    var time = now / 1000;
+    for (var i = 0; i < lines.length; i++) {
+      var L = lines[i];
+      var x = Math.sin(time * 0.55 + L.t * 5.2) * 9;
+      var opacity = L.base;
+      if (pointer) {
+        var d = L.t - py;
+        var pull = Math.exp(-(d * d) / 0.012);
+        x += (px - 0.5) * 120 * pull;
+        opacity += pull * 0.45;
+      }
+      L.el.style.transform = 'translate3d(' + x.toFixed(2) + 'px,0,0)';
+      L.el.style.opacity = (opacity < 0.85 ? opacity : 0.85).toFixed(3);
+    }
+    raf = requestAnimationFrame(frame);
+  }
+
+  function start() { if (!running) { running = true; raf = requestAnimationFrame(frame); } }
+  function stop()  { if (running) { running = false; cancelAnimationFrame(raf); pointer = false; } }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries[0].isIntersecting ? start() : stop();
+    }, { threshold: 0 }).observe(hero);
+  } else {
+    start();
+  }
+  document.addEventListener('visibilitychange', function () {
+    document.hidden ? stop() : start();
+  });
+})();
+
 /* Register the service worker so the site can be installed to the home screen. */
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
