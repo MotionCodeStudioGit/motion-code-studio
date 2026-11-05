@@ -1644,6 +1644,26 @@ button { font: inherit; }
   letter-spacing: -0.02em;
 }
 .rating__stars { color: var(--copper); font-size: clamp(15px, 1.6vw, 18px); letter-spacing: 0.14em; }
+/* The five stars arrive one at a time and the score counts up to it, so
+   the strongest thing the studio has actually registers instead of
+   sitting there as static text. Each star starts dim and small; the
+   script adds .is-in when the figure scrolls into view. */
+.rating__stars i {
+  display: inline-block;
+  font-style: normal;
+  opacity: 0.18;
+  transform: scale(0.72);
+  transition: opacity .42s var(--ease), transform .42s var(--ease);
+}
+.rating.is-in .rating__stars i { opacity: 1; transform: scale(1); }
+.rating.is-in .rating__stars i:nth-child(1) { transition-delay: .10s; }
+.rating.is-in .rating__stars i:nth-child(2) { transition-delay: .24s; }
+.rating.is-in .rating__stars i:nth-child(3) { transition-delay: .38s; }
+.rating.is-in .rating__stars i:nth-child(4) { transition-delay: .52s; }
+.rating.is-in .rating__stars i:nth-child(5) { transition-delay: .66s; }
+/* Hold the width steady while the number counts, so nothing shifts. */
+.rating__score { font-variant-numeric: tabular-nums; }
+
 .rating__meta  { font-size: clamp(13px, 1vw, 14.5px); font-weight: 300; }
 .lp-section--light .rating__score { color: var(--text-dark); }
 .lp-section--dark  .rating__score { color: var(--cream); }

@@ -136,7 +136,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="styles.css?v=104" />
+<link rel="stylesheet" href="styles.css?v=105" />
 <style>
   @media (min-width: 900px) {
     .bp-grid4 { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
@@ -271,10 +271,13 @@
     <span class="kicker">In their words</span>
     <h2 class="lp-h2">What patients say</h2>
     <p class="lp-p">Pulled straight from our Google page. Their words, not ours.</p>
-    <p class="rating">
-      <span class="rating__score">5.0</span>
-      <span class="rating__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <span class="rating__meta">out of 5, from 22 reviews on Google</span>
+    <!-- The whole figure is one label for a screen reader, so the count-up
+         is never read out digit by digit. The visible pieces are hidden
+         from assistive tech and animate purely for sighted visitors. -->
+    <p class="rating" data-rating role="img" aria-label="Rated 5.0 out of 5, from 22 reviews on Google">
+      <span class="rating__score" aria-hidden="true" data-count-to="5">5.0</span>
+      <span class="rating__stars" aria-hidden="true"><i>&#9733;</i><i>&#9733;</i><i>&#9733;</i><i>&#9733;</i><i>&#9733;</i></span>
+      <span class="rating__meta" aria-hidden="true">out of 5, from 22 reviews on Google</span>
     </p>
     <div class="lp-grid lp-grid--reviews">
       <div class="lp-card">
@@ -383,6 +386,6 @@
   <span class="mobile-cta__arrow" aria-hidden="true">&#8594;</span>
 </a>
 
-<script src="script.js?v=9" defer></script>
+<script src="script.js?v=10" defer></script>
 </body>
 </html>

@@ -160,6 +160,50 @@
   });
 })();
 
+/* The Google rating. Counts the score up and lights the stars in turn the
+   first time the figure scrolls into view. The accessible name on the
+   figure already states the full rating, and every visible piece inside
+   it is aria-hidden, so none of this is read out as it ticks. Anyone who
+   has asked for reduced motion just gets the finished figure. */
+(function () {
+  var fig = document.querySelectorAll('[data-rating]');
+  if (!fig.length) return;
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  var still = !!(reduce && reduce.matches);
+
+  function run(el) {
+    el.classList.add('is-in');
+    var score = el.querySelector('[data-count-to]');
+    if (!score) return;
+    var target = parseFloat(score.getAttribute('data-count-to'));
+    if (isNaN(target) || still) return;
+    var started = null, DURATION = 900;
+    function tick(now) {
+      if (started === null) started = now;
+      var p = Math.min(1, (now - started) / DURATION);
+      // ease out, so it settles onto the number rather than stopping dead
+      var eased = 1 - Math.pow(1 - p, 3);
+      score.textContent = (target * eased).toFixed(1);
+      if (p < 1) requestAnimationFrame(tick);
+      else score.textContent = target.toFixed(1);
+    }
+    score.textContent = '0.0';
+    requestAnimationFrame(tick);
+  }
+
+  if (still || !('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(fig, function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { run(e.target); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  Array.prototype.forEach.call(fig, function (el) { io.observe(el); });
+})();
+
 /* Register the service worker so the site can be installed to the home screen. */
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
