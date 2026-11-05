@@ -1043,7 +1043,27 @@ button { font: inherit; }
   .btn {
     min-height: 48px;
     padding: 14px 24px;
+    /* .btn is nowrap by default, which is right for short labels but not
+       for "Read All Our Reviews on Google": at 360px that label forced
+       the button to 368px, pushed the document wider than the screen and
+       dragged the fixed header out with it, so the page scrolled
+       sideways onto a black strip. Let a long label wrap instead. This
+       only wraps when it has to; short labels are unaffected. */
+    white-space: normal;
+    max-width: 100%;
+    text-align: center;
   }
+}
+/* On the narrowest phones the wide letter-spacing is itself most of the
+   problem, so give that label room to fit rather than wrap awkwardly. */
+@media (max-width: 400px) {
+  .btn {
+    letter-spacing: 0.14em;
+    padding: 14px 18px;
+    gap: 10px;
+  }
+}
+@media (max-width: 720px) {
   /* HERO — clear the fixed nav, but keep it compact so the wordmark + tagline
      read as one composition instead of floating in dead black space. */
   .hero { min-height: 0; }
